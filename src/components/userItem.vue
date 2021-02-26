@@ -42,9 +42,6 @@ export default {
 </script>
 
 <style lang="less" scoped>
-.rem(@name,@px){
-  @{name}:unit((@px/192),rem)
-}
 .userItem{
   .rem(width,117px);
   text-align: center

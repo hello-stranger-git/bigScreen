@@ -124,9 +124,6 @@ export default {
 }
 </script>
 <style lang="less" scoped>
-.rem(@name,@px){
-    @{name} : unit( (@px / 192),rem);
-}
 .message{
   position: absolute;
   .rem(top,141px);

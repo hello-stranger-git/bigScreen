@@ -19,9 +19,6 @@ export default {
 </script>
 
 <style lang="less" scoped>
-.rem(@name,@px){
-    @{name} : unit( (@px / 192),rem);
-}
 .pro{
   display: inline-block;
   .rem(width,38px);

@@ -250,9 +250,6 @@ export default {
 </script>
 
 <style lang="less" scoped>
-.rem(@name,@px){
-    @{name} : unit( (@px / 192),rem);
-}
 .centent{
     .rem(font-size,16px);
     background: #ccc;
