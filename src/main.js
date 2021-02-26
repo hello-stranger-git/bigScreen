@@ -5,7 +5,7 @@ import store from './store'
 import ElementUI from 'element-ui'
 import 'element-ui/lib/theme-chalk/index.css'
 // px2rem 自适应
-import 'lib-flexible'
+import '@/utils/lib-flexible/flexible.js'
 // 引入echarts挂载全局
 import * as echarts from 'echarts'
 import '@/assets/reset.css'
