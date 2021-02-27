@@ -39,7 +39,27 @@
           <!-- <div class="centerLeftTitle">
             <span>客流天气占比</span>
           </div> -->
-          <div class="type"></div>
+          <div class="type">
+            <div class="status">
+              <img :src="status?normal:abnormal">
+              <p v-if="status" class="normal">正常</p>
+              <p v-else  class="abnormal">异常</p>
+            </div>
+            <div class="message">
+              <div>
+                <span>姓名</span>
+                <span>{{ kqData.name }}</span>
+              </div>
+              <div>
+                <span>考勤时间</span>
+                <span>{{ kqData.startTime }}</span>
+              </div>
+              <div>
+                <span>考勤时间</span>
+                <span>{{ kqData.endTime }}</span>
+              </div>
+            </div>
+          </div>
           <div class="message"></div>
         </div>
         <div class="centerRight">
@@ -67,6 +87,16 @@
       <div class="left">
         <div class="leftTitle">
           <span>客流单价分析</span>
+        </div>
+        <div class="rightLenged">
+          <Lenged color="#57E6B1" leg="销售额"/>
+          <Lenged color="#FE38A7" leg="客流人数"/>
+          <div class="priceLenged">
+            <span>
+
+            </span>
+            <span>客单价</span>
+          </div>
         </div>
         <div class="leftcontext">
           <FlowPrice/>
@@ -187,7 +217,15 @@ export default {
         }
       ],
       imgNumber: 1, // 模拟更换头像
-      userDataClear: null
+      userDataClear: null,
+      status: true,
+      normal: require('@/assets/image/kq/normal.png'),
+      abnormal: require('@/assets/image/kq/abnormal.png'),
+      kqData: {
+        name: '某某某',
+        startTime: '08:52:12',
+        endTime: '09:00:00'
+      }
     }
   },
   components: {
@@ -420,7 +458,47 @@ export default {
         }
       }
       .type{
-
+        position: absolute;
+        .rem(top,80px);
+        width: 100%;
+        text-align: center;
+        .status{
+          img{
+            .rem(width,114px);
+            .rem(height,114px)
+          }
+          p{
+            .rem(margin-top,18px)
+          }
+          .normal{
+            .rem(font-size,20px);
+            font-weight: bold;
+            color: #4699EB;
+          }
+          .abnormal{
+            .rem(font-size,20px);
+            font-weight: bold;
+            color: #4699EB;
+          }
+        }
+        .message{
+          .rem(margin-top,55px);
+          &>div{
+            .rem(padding-bottom,23px);
+            .rem(margin-left,22px);
+            .rem(margin-right,22px);
+            display:flex;
+            justify-content: space-between;
+            .rem(font-size,18px);
+            font-weight: 400;
+            color: #EFFFFB;
+            &:nth-child(n+2){
+              .rem(margin-top,24px)
+            }
+            box-sizing: border-box;
+            border-bottom: 1px dotted #FFFFFF;
+          }
+        }
       }
 
     }
@@ -494,6 +572,46 @@ export default {
         position: absolute;
       .rem(top,21px);
       .rem(left,21px);
+      }
+    }
+    .rightLenged{
+      position: absolute;
+      .rem(width,310px);
+      .rem(top,26px);
+      .rem(right,16px);
+      display: flex;
+      justify-content: space-between;
+      .priceLenged{
+        .rem(width,70px);
+        display: flex;
+        align-items: center;
+
+        &>span{
+          &:first-child{
+            .rem(width,15px);
+            .rem(height,1px);
+            background:#FDE545;
+            &::before{
+              content:"";
+              display: block;
+              border-radius: 50%;
+              position: relative;
+              left: 50%;
+              top: 50%;
+              transform: translate(-50%,-50%);
+              .rem(width,6px);
+              .rem(height,6px);
+              background: #FDE545;
+            }
+          }
+          &:last-child{
+            .rem(font-size,14px);
+            .rem(margin-left,9px);
+            font-weight: 400;
+            color: #EFFFFB;
+          }
+        }
+
       }
     }
     .leftcontext{
