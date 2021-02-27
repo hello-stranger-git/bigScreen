@@ -88,6 +88,16 @@
         <div class="leftTitle">
           <span>客流单价分析</span>
         </div>
+        <div class="rightLenged">
+          <Lenged color="#57E6B1" leg="销售额"/>
+          <Lenged color="#FE38A7" leg="客流人数"/>
+          <div class="priceLenged">
+            <span>
+
+            </span>
+            <span>客单价</span>
+          </div>
+        </div>
         <div class="leftcontext">
           <FlowPrice/>
         </div>
@@ -562,6 +572,46 @@ export default {
         position: absolute;
       .rem(top,21px);
       .rem(left,21px);
+      }
+    }
+    .rightLenged{
+      position: absolute;
+      .rem(width,310px);
+      .rem(top,26px);
+      .rem(right,16px);
+      display: flex;
+      justify-content: space-between;
+      .priceLenged{
+        .rem(width,70px);
+        display: flex;
+        align-items: center;
+
+        &>span{
+          &:first-child{
+            .rem(width,15px);
+            .rem(height,1px);
+            background:#FDE545;
+            &::before{
+              content:"";
+              display: block;
+              border-radius: 50%;
+              position: relative;
+              left: 50%;
+              top: 50%;
+              transform: translate(-50%,-50%);
+              .rem(width,6px);
+              .rem(height,6px);
+              background: #FDE545;
+            }
+          }
+          &:last-child{
+            .rem(font-size,14px);
+            .rem(margin-left,9px);
+            font-weight: 400;
+            color: #EFFFFB;
+          }
+        }
+
       }
     }
     .leftcontext{
