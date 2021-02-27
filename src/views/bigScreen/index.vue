@@ -68,6 +68,9 @@
         <div class="leftTitle">
           <span>客流单价分析</span>
         </div>
+        <div class="leftcontext">
+          <FlowPrice/>
+        </div>
       </div>
       <!-- <div class="center"> -->
         <!-- <div class="centerLeft">
@@ -86,7 +89,9 @@
             <span>30天客流趋势</span>
           </div>
       </div> -->
-      <div class="right"></div>
+      <div class="right">
+        <Similarity/>
+      </div>
     </div>
   </div>
 </template>
@@ -96,6 +101,8 @@ import Lenged from '@/components/lenged.vue'
 // import UserItem from '@/components/userItem'
 import FeaturesChart from './features'
 import FlowChart from './flow'
+import Similarity from './similarity'
+import FlowPrice from './flowPrice'
 export default {
   data () {
     return {
@@ -187,7 +194,9 @@ export default {
     Lenged,
     // UserItem,
     FeaturesChart,
-    FlowChart
+    FlowChart,
+    Similarity,
+    FlowPrice
   },
   methods: {
     toggleFullscreen () {
@@ -487,6 +496,12 @@ export default {
       .rem(left,21px);
       }
     }
+    .leftcontext{
+      position: absolute;
+      .rem(top,29px);
+      .rem(width, 547px);
+      .rem(height, 430px)
+    }
   }
   // .center{
   //   position: absolute;
@@ -557,6 +572,10 @@ export default {
     .rem(height,462px);
     .rem(top,0rem);
     .rem(left,565px);
+    .rem(padding-left,35px);
+    .rem(padding-right,35px);
+    .rem(padding-top,25px);
+    .rem(padding-bottom,25px)
   }
 }
 </style>
