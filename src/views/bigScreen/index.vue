@@ -39,7 +39,27 @@
           <!-- <div class="centerLeftTitle">
             <span>客流天气占比</span>
           </div> -->
-          <div class="type"></div>
+          <div class="type">
+            <div class="status">
+              <img :src="status?normal:abnormal">
+              <p v-if="status" class="normal">正常</p>
+              <p v-else  class="abnormal">异常</p>
+            </div>
+            <div class="message">
+              <div>
+                <span>姓名</span>
+                <span>{{ kqData.name }}</span>
+              </div>
+              <div>
+                <span>考勤时间</span>
+                <span>{{ kqData.startTime }}</span>
+              </div>
+              <div>
+                <span>考勤时间</span>
+                <span>{{ kqData.endTime }}</span>
+              </div>
+            </div>
+          </div>
           <div class="message"></div>
         </div>
         <div class="centerRight">
@@ -187,7 +207,15 @@ export default {
         }
       ],
       imgNumber: 1, // 模拟更换头像
-      userDataClear: null
+      userDataClear: null,
+      status: true,
+      normal: require('@/assets/image/kq/normal.png'),
+      abnormal: require('@/assets/image/kq/abnormal.png'),
+      kqData: {
+        name: '某某某',
+        startTime: '08:52:12',
+        endTime: '09:00:00'
+      }
     }
   },
   components: {
@@ -420,7 +448,47 @@ export default {
         }
       }
       .type{
-
+        position: absolute;
+        .rem(top,80px);
+        width: 100%;
+        text-align: center;
+        .status{
+          img{
+            .rem(width,114px);
+            .rem(height,114px)
+          }
+          p{
+            .rem(margin-top,18px)
+          }
+          .normal{
+            .rem(font-size,20px);
+            font-weight: bold;
+            color: #4699EB;
+          }
+          .abnormal{
+            .rem(font-size,20px);
+            font-weight: bold;
+            color: #4699EB;
+          }
+        }
+        .message{
+          .rem(margin-top,55px);
+          &>div{
+            .rem(padding-bottom,23px);
+            .rem(margin-left,22px);
+            .rem(margin-right,22px);
+            display:flex;
+            justify-content: space-between;
+            .rem(font-size,18px);
+            font-weight: 400;
+            color: #EFFFFB;
+            &:nth-child(n+2){
+              .rem(margin-top,24px)
+            }
+            box-sizing: border-box;
+            border-bottom: 1px dotted #FFFFFF;
+          }
+        }
       }
 
     }
