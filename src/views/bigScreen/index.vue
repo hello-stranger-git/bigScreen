@@ -147,7 +147,7 @@ export default {
           name: '廖某某',
           age: '35~50岁',
           time: '19:45:18',
-          status: 0
+          status: 1
         },
         {
           id: 2,
@@ -155,7 +155,7 @@ export default {
           name: '廖某某',
           age: '35~50岁',
           time: '19:45:18',
-          status: 0
+          status: 1
         },
         {
           id: 3,
@@ -171,7 +171,7 @@ export default {
           name: '廖某某',
           age: '35~50岁',
           time: '19:45:18',
-          status: 0
+          status: 1
         },
         {
           id: 5,
@@ -179,7 +179,7 @@ export default {
           name: '廖某某',
           age: '35~50岁',
           time: '19:45:18',
-          status: 0
+          status: 1
         },
         {
           id: 6,
@@ -187,12 +187,12 @@ export default {
           name: '廖某某',
           age: '35~50岁',
           time: '19:45:18',
-          status: 0
+          status: 1
         }
       ],
       imgNumber: 1, // 模拟更换头像
       userDataClear: null,
-      status: false,
+      status: true,
       normal: require('@/assets/image/kq/normal.png'),
       abnormal: require('@/assets/image/kq/abnormal.png'),
       icon: require('@/assets/image/kq/now.png'),
