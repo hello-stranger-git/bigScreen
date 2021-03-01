@@ -110,6 +110,11 @@ export default {
           {
             name: '销售额',
             data: [490000, 170000, 390000, 180000, 160000],
+            lineStyle: {
+              normal: {
+                color: '#FDE545'
+              }
+            },
             type: 'bar',
             yAxisIndex: 1,
             barWidth: '15%',
@@ -128,7 +133,6 @@ export default {
               }
             }
           },
-
           {
             name: '客单价',
             type: 'line',
@@ -140,11 +144,33 @@ export default {
               }
             }
           }]
-      }
+      },
+      flowPriceBarChartsClear: null
     }
   },
   components: {
     BarChart
+  },
+  beforeUpdate () {
+    this.flowLineChartsClear = null
+  },
+  mounted () {
+    // 客流人数
+    // const flowPeople = this.option.series[0].data
+    // //销售额
+    // const sale = this.option.series[1].data
+    // //客单价
+    // const price = this.option.series[1].data
+    this.flowPriceBarChartsClear = setInterval(() => {
+      this.option.series[0].data = []
+      this.option.series[1].data = []
+      this.option.series[2].data = []
+      for (let i = 0; i < 5; i++) {
+        this.option.series[0].data.push(Math.floor(Math.random() * 500 + 0))
+        this.option.series[1].data.push(Math.floor(Math.random() * 1000000 + 0))
+        this.option.series[2].data.push(Math.floor(Math.random() * 500 + 0))
+      }
+    }, 1500)
   }
 }
 </script>
