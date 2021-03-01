@@ -41,9 +41,10 @@
           </div> -->
           <div class="type">
             <div class="status">
-              <img :src="status?normal:abnormal">
+              <!-- <img :src="status?normal:abnormal"> -->
+              <img :src="icon">
               <p v-if="status" class="normal">正常</p>
-              <p v-else  class="abnormal">异常</p>
+              <p v-else  class="abnormal">迟到</p>
             </div>
             <div class="message">
               <div>
@@ -55,7 +56,7 @@
                 <span>{{ kqData.startTime }}</span>
               </div>
               <div>
-                <span>考勤时间</span>
+                <span>上班时间</span>
                 <span>{{ kqData.endTime }}</span>
               </div>
             </div>
@@ -218,9 +219,10 @@ export default {
       ],
       imgNumber: 1, // 模拟更换头像
       userDataClear: null,
-      status: true,
+      status: false,
       normal: require('@/assets/image/kq/normal.png'),
       abnormal: require('@/assets/image/kq/abnormal.png'),
+      icon: require('@/assets/image/kq/now.png'),
       kqData: {
         name: '某某某',
         startTime: '08:52:12',
@@ -478,7 +480,7 @@ export default {
           .abnormal{
             .rem(font-size,20px);
             font-weight: bold;
-            color: #4699EB;
+            color:#FA358A;
           }
         }
         .message{
