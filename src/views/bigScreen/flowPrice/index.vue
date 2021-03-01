@@ -21,7 +21,7 @@ export default {
         yAxis: [
           {
             type: 'value',
-            name: '客流人数',
+            // name: '客流人数',
             min: 0,
             max: 500,
             position: 'left',
@@ -39,9 +39,9 @@ export default {
           },
           {
             type: 'value',
-            name: '销售额',
+            // name: '销售额',
             min: 0,
-            max: 1000,
+            max: 1000000,
             position: 'right',
             axisLine: {
               show: true,
@@ -50,7 +50,12 @@ export default {
               }
             },
             axisLabel: {
-              formatter: '{value} W'
+              formatter: (value) => {
+                if (value > 10000) {
+                  return parseInt(value / 10000) + 'w'
+                }
+                return value
+              }
             },
             splitLine: { show: false }
           },
@@ -104,7 +109,7 @@ export default {
           },
           {
             name: '销售额',
-            data: [490, 170, 390, 180, 160],
+            data: [490000, 170000, 390000, 180000, 160000],
             type: 'bar',
             yAxisIndex: 1,
             barWidth: '15%',
