@@ -5,28 +5,28 @@
       <div class="similarity_top">
         <div class="top_img">
          <div>
-           <img :src="nowImg" />
-           <p>ID:25251254</p>
+           <img :src="similarity.character1.uimg" />
+           <p>ID:{{similarity.character1.uname}}</p>
          </div>
          <div>
-           <img :src="dataImg"/>
-           <p>呱呱蛙</p>
+           <img :src="similarity.character2.uimg"/>
+           <p>{{similarity.character2.uname}}</p>
           </div>
         </div>
         <div class="top_ratio">
           <span>相似度</span>
-          <p>75<span>%</span></p>
+          <p>{{similarity.Similarity}}<span>%</span></p>
           </div>
       </div>
       <!-- 商品推荐区域 -->
       <div class="similarity_bottom">
      <div class="bottom_left">
-       <img :src="Alienware"/>
+       <img :src="similarity.wares.img"/>
      </div>
      <div class="bottom_right">
-       <p>外星人Alienware m15</p>
-       <span>￥14999.00</span>
-       <img :src="ewm"/>
+       <p>{{similarity.wares.name}}</p>
+       <span>￥{{similarity.wares.price}}</span>
+       <img :src="similarity.wares.QRcode"/>
      </div>
       </div>
   </div>
@@ -34,25 +34,15 @@
 
 <script>
 export default {
-  data () {
-    return {
-      dataImg: require('@/assets/image/similarity/data.png'),
-      nowImg: require('@/assets/image/similarity/now.png'),
-      Alienware: require('@/assets/image/similarity/Alienware.png'),
-      ewm: require('@/assets/image/similarity/ewm.png')
+  props: {
+    similarity: {
+      type: Object
     }
   }
 }
 </script>
 
 <style lang="less" scoped>
-// .similarity{
-//   // border: 1px solid red;
-//   display: flex;
-//   & > :not(:first-child){
-//    .rem( margin-left, 19px);
-//   }
-// }
 .similarity{
   overflow: hidden;
   border: 1px solid #FFFFFF;
@@ -60,6 +50,7 @@ export default {
   .rem(height,413px);
   .rem(padding,12px);
 }
+// 对比区域
 .similarity_top{
   position: relative;
 }
@@ -116,6 +107,7 @@ export default {
     }
   }
 }
+// 商品推荐区域
 .similarity_bottom{
   .rem(padding-top,34px );
   display: flex;
@@ -123,6 +115,7 @@ export default {
 .bottom_left{
   .rem(width, 216px);
   .rem(height, 148px);
+  overflow: hidden;
   img{
     width: 100%;
   }

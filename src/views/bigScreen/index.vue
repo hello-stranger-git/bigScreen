@@ -123,7 +123,7 @@
           </div>
       </div> -->
       <div class="right">
-        <Similarity/>
+          <Similarity v-for="item in similarityData" :key="item.id" :similarity="item.similarityItem"/>
       </div>
     </div>
   </div>
@@ -200,7 +200,79 @@ export default {
         name: '某某某',
         startTime: '08:52:12',
         endTime: '09:00:00'
-      }
+      },
+      // 相似度对比数据
+      similarityData: [
+        {
+          id: 1,
+          similarityItem: {
+            character1: {
+              id: 1,
+              uname: '25251254',
+              uimg: require('@/assets/image/similarity/now.png')
+            },
+            character2: {
+              id: 2,
+              uname: '呱呱蛙',
+              uimg: require('@/assets/image/similarity/data.png')
+            },
+            Similarity: 75,
+            wares: {
+              id: 1,
+              name: '外星人Alienware m15',
+              price: '14999.00',
+              img: require('@/assets/image/similarity/Alienware.png'),
+              QRcode: require('@/assets/image/similarity/ewm.png')
+            }
+          }
+        },
+        {
+          id: 2,
+          similarityItem: {
+            character1: {
+              id: 1,
+              uname: '25251254',
+              uimg: require('@/assets/image/similarity/now.png')
+            },
+            character2: {
+              id: 2,
+              uname: '呱呱蛙',
+              uimg: require('@/assets/image/similarity/data.png')
+            },
+            Similarity: 95,
+            wares: {
+              id: 2,
+              name: '外星人Alienware m15',
+              price: '14999.00',
+              img: require('@/assets/image/similarity/Alienware.png'),
+              QRcode: require('@/assets/image/similarity/ewm.png')
+            }
+          }
+        },
+        {
+          id: 3,
+          similarityItem: {
+            character1: {
+              id: 1,
+              uname: '25251254',
+              uimg: require('@/assets/image/similarity/now.png')
+            },
+            character2: {
+              id: 3,
+              uname: '呱呱蛙',
+              uimg: require('@/assets/image/similarity/data.png')
+            },
+            Similarity: 75,
+            wares: {
+              id: 2,
+              name: '外星人Alienware m15',
+              price: '14999.00',
+              img: require('@/assets/image/similarity/Alienware.png'),
+              QRcode: require('@/assets/image/similarity/ewm.png')
+            }
+          }
+        }
+      ]
     }
   },
   components: {
@@ -260,6 +332,7 @@ export default {
         })
       }, 1500)
     }
+
   },
   mounted () {
     // this.userDataAxios()
@@ -668,7 +741,11 @@ export default {
     .rem(padding-left,35px);
     .rem(padding-right,35px);
     .rem(padding-top,25px);
-    .rem(padding-bottom,25px)
+    .rem(padding-bottom,25px);
+    display:flex;
+     & > :not(:first-child){
+      .rem( margin-left, 19px);
+     }
   }
 }
 </style>
