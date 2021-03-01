@@ -1,16 +1,17 @@
 <template>
   <div class="userItem">
     <div class="top">
-      <img :src="icon"/>
+      <img :src="userData.icon"/>
     </div>
-    <div class="center">
-      <img v-if="sex===1" :src="girlIcon">
-      <img v-if="sex===0" :src="boyIcon">
-      <span>{{ age }}</span>
+    <div class="name">
+      <span>{{ userData.name }}</span>
     </div>
-    <div class="bottom">
-      <img :src="timeIcon">
-      <span>{{ time }}</span>
+    <div class="time">
+      <span>{{ userData.time }}</span>
+    </div>
+    <div class="status">
+      <span style="color:#4699EB" v-if="userData.status">正常</span>
+      <span style="color:#FA358A" v-else>迟到</span>
     </div>
   </div>
 </template>
@@ -18,24 +19,15 @@
 <script>
 export default {
   props: {
-    icon: {
-      type: String
-    },
-    sex: {
-      type: Number// (0、男,1、女)
-    },
-    age: {
-      type: String
-    },
-    time: {
-      type: String
+    userData: {
+      type: Object
     }
   },
   data () {
     return {
-      boyIcon: require('@/assets/image/boy.png'),
-      girlIcon: require('@/assets/image/girl.png'),
-      timeIcon: require('@/assets/image/time.png')
+      // boyIcon: require('@/assets/image/boy.png'),
+      // girlIcon: require('@/assets/image/girl.png'),
+      // timeIcon: require('@/assets/image/time.png')
     }
   }
 }
@@ -47,18 +39,21 @@ export default {
   text-align: center
 }
 .top{
+  .rem(width,103px);
+  .rem(height, 103px);
+  margin: auto;
   &>img{
-    .rem(width,94px);
-    .rem(height, 94px)
+    .rem(width,103px);
+    .rem(height, 103px)
   }
 }
-.center{
-  .rem(margin-top,12px);
-  &>img{
-    .rem(width,25px);
-    .rem(height, 26px);
-    vertical-align: middle;
-  }
+.name{
+  .rem(margin-top,10px);
+  // &>img{
+  //   .rem(width,25px);
+  //   .rem(height, 26px);
+  //   vertical-align: middle;
+  // }
   &>span{
     .rem(font-size,18px);
     .rem(font-weight,400);
@@ -67,19 +62,23 @@ export default {
     color: #EFFFFB;
   }
 }
-.bottom{
-  .rem(margin-top,12px);
-  &>img{
-    .rem(width,25px);
-    .rem(height, 25px);
-    vertical-align: middle;
-  }
+.time{
+  .rem(margin-top,10px);
   &>span{
     .rem(font-size,18px);
     .rem(font-weight,400);
     .rem(margin-left,12);
     vertical-align: middle;
     color: #EFFFFB;
+  }
+}
+.status{
+  .rem(margin-top,10px);
+  &>span{
+    .rem(font-size,18px);
+    .rem(font-weight,400);
+    .rem(margin-left,12);
+    vertical-align: middle;
   }
 }
 </style>
