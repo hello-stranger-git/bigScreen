@@ -41,9 +41,10 @@
           </div> -->
           <div class="type">
             <div class="status">
-              <img :src="status?normal:abnormal">
+              <!-- <img :src="status?normal:abnormal"> -->
+              <img :src="icon">
               <p v-if="status" class="normal">正常</p>
-              <p v-else  class="abnormal">异常</p>
+              <p v-else  class="abnormal">迟到</p>
             </div>
             <div class="message">
               <div>
@@ -55,7 +56,7 @@
                 <span>{{ kqData.startTime }}</span>
               </div>
               <div>
-                <span>考勤时间</span>
+                <span>上班时间</span>
                 <span>{{ kqData.endTime }}</span>
               </div>
             </div>
@@ -63,9 +64,11 @@
           <div class="message"></div>
         </div>
         <div class="centerRight">
-          <!-- <div class="centerRightTitle">
-            <span>实时出入口客流量排行</span>
-          </div> -->
+          <el-row :gutter="20">
+            <el-col v-for="item in userData" :key="item.id" :span="8">
+              <UserItem :userData="item"/>
+            </el-col>
+          </el-row> -->
         </div>
 
       </div>
@@ -128,7 +131,7 @@
 
 <script>
 import Lenged from '@/components/lenged.vue'
-// import UserItem from '@/components/userItem'
+import UserItem from '@/components/userItem'
 import FeaturesChart from './features'
 import FlowChart from './flow'
 import Similarity from './similarity'
@@ -140,80 +143,51 @@ export default {
       userData: [
         {
           id: 1,
-          icon: require('@/assets/image/user1.png'),
-          sex: 0,
+          icon: require('@/assets/image/kq/now.png'),
+          name: '廖某某',
           age: '35~50岁',
-          time: '19:45:18'
+          time: '19:45:18',
+          status: 1
         },
         {
           id: 2,
-          icon: require('@/assets/image/user2.png'),
-          sex: 1,
+          icon: require('@/assets/image/kq/now.png'),
+          name: '廖某某',
           age: '35~50岁',
-          time: '19:45:18'
+          time: '19:45:18',
+          status: 1
         },
         {
           id: 3,
-          icon: require('@/assets/image/user1.png'),
-          sex: 0,
+          icon: require('@/assets/image/kq/now.png'),
+          name: '廖某某',
           age: '35~50岁',
-          time: '19:45:18'
+          time: '19:45:18',
+          status: 1
         },
         {
           id: 4,
-          icon: require('@/assets/image/user2.png'),
-          sex: 1,
+          icon: require('@/assets/image/kq/now.png'),
+          name: '廖某某',
           age: '35~50岁',
-          time: '19:45:18'
+          time: '19:45:18',
+          status: 1
         },
         {
           id: 5,
-          icon: require('@/assets/image/user1.png'),
-          sex: 0,
+          icon: require('@/assets/image/kq/now.png'),
+          name: '廖某某',
           age: '35~50岁',
-          time: '19:45:18'
+          time: '19:45:18',
+          status: 1
         },
         {
           id: 6,
-          icon: require('@/assets/image/user2.png'),
-          sex: 1,
+          icon: require('@/assets/image/kq/now.png'),
+          name: '廖某某',
           age: '35~50岁',
-          time: '19:45:18'
-        },
-        {
-          id: 7,
-          icon: require('@/assets/image/user2.png'),
-          sex: 1,
-          age: '35~50岁',
-          time: '19:45:18'
-        },
-        {
-          id: 8,
-          icon: require('@/assets/image/user1.png'),
-          sex: 0,
-          age: '35~50岁',
-          time: '19:45:18'
-        },
-        {
-          id: 9,
-          icon: require('@/assets/image/user1.png'),
-          sex: 0,
-          age: '35~50岁',
-          time: '19:45:18'
-        },
-        {
-          id: 10,
-          icon: require('@/assets/image/user2.png'),
-          sex: 1,
-          age: '35~50岁',
-          time: '19:45:18'
-        },
-        {
-          id: 11,
-          icon: require('@/assets/image/user1.png'),
-          sex: 0,
-          age: '35~50岁',
-          time: '19:45:18'
+          time: '19:45:18',
+          status: 1
         }
       ],
       imgNumber: 1, // 模拟更换头像
@@ -221,6 +195,7 @@ export default {
       status: true,
       normal: require('@/assets/image/kq/normal.png'),
       abnormal: require('@/assets/image/kq/abnormal.png'),
+      icon: require('@/assets/image/kq/now.png'),
       kqData: {
         name: '某某某',
         startTime: '08:52:12',
@@ -230,7 +205,7 @@ export default {
   },
   components: {
     Lenged,
-    // UserItem,
+    UserItem,
     FeaturesChart,
     FlowChart,
     Similarity,
@@ -287,7 +262,7 @@ export default {
     }
   },
   mounted () {
-    this.userDataAxios()
+    // this.userDataAxios()
   },
   beforeUpdate () {
     this.userDataClear = null
@@ -478,7 +453,7 @@ export default {
           .abnormal{
             .rem(font-size,20px);
             font-weight: bold;
-            color: #4699EB;
+            color:#FA358A;
           }
         }
         .message{
@@ -508,14 +483,14 @@ export default {
       .rem(height,504px);
       .rem(top,0px);
       .rem(right,0px);
-      .centerRightTitle{
-        span{
-          .rem(font-size,24px);
-          font-weight: 400;
-          color: #259CFF;
-          position: absolute;
-        .rem(top,21px);
-        .rem(left,21px);
+      .rem(padding-top,37px);
+      .rem(padding-bottom,47px);
+      .rem(padding-left,22px);
+      .rem(padding-right,24px);
+      overflow: hidden;
+      .el-col{
+        &:nth-child(n+4){
+          .rem(margin-top,40px)
         }
       }
     }

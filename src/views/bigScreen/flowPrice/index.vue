@@ -10,18 +10,36 @@ export default {
   data () {
     return {
       option: {
+
         grid: {
-          show: false
+          left: '0%',
+          right: '2%',
+          bottom: '3%',
+          containLabel: true
         },
         xAxis: {
           type: 'category',
-          data: ['01/12', '01/11', '01/10', '01/09', '01/08']
+          data: ['01/12', '01/11', '01/10', '01/09', '01/08'],
+          axisTick: {
+            show: false
+          },
+          axisLabel: {
+            color: '#fff6',
+            fontWeight: 400,
+            fontSize: 14,
+            margin: 14,
+            interval: 0
+          },
+          axisLine: {
+            lineStyle: {
+              color: '#4080fe1f'
+            }
+          }
 
         },
         yAxis: [
           {
             type: 'value',
-            // name: '客流人数',
             min: 0,
             max: 500,
             position: 'left',
@@ -32,16 +50,23 @@ export default {
               }
             },
             axisLabel: {
-              formatter: '{value} '
+              color: '#1184D9',
+              fontWeight: 400,
+              fontSize: 14,
+              showMinLabel: false
             },
-            splitLine: { show: false }
+            splitLine: {
+              show: false,
+              lineStyle: {
+                color: '#4080fe1f'
+              }
+            }
 
           },
           {
             type: 'value',
-            // name: '销售额',
             min: 0,
-            max: 1000,
+            max: 1000000,
             position: 'right',
             axisLine: {
               show: true,
@@ -50,11 +75,19 @@ export default {
               }
             },
             axisLabel: {
-              formatter: '{value} W'
+              color: '#1184D9',
+              fontWeight: 400,
+              fontSize: 14,
+              showMinLabel: false,
+              formatter: (value) => {
+                if (value > 10000) {
+                  return parseInt(value / 10000) + 'w'
+                }
+                return value
+              }
             },
             splitLine: { show: false }
           },
-
           {
             type: 'value',
             name: '客单价',
@@ -86,14 +119,20 @@ export default {
         series: [
           {
             name: '销售额',
-            data: [490, 170, 390, 180, 160],
+            data: [490000, 170000, 390000, 180000, 160000],
+            lineStyle: {
+              normal: {
+                color: '#FDE545'
+              }
+            },
             type: 'bar',
-
+            yAxisIndex: 1,
+            barWidth: '15%',
+            barGap: '50%',
             itemStyle: {
-
               // 圆角
               normal: {
-                // barBorderRadius: [10, 10, 0, 0],
+                barBorderRadius: [10, 10, 0, 0],
                 color: new this.$echarts.graphic.LinearGradient(
                   0, 0, 0, 1,
                   [
@@ -109,9 +148,11 @@ export default {
             data: [360, 202, 340, 190, 170],
             type: 'bar',
             // showBackground: true,
-            yAxisIndex: 1,
+            barWidth: '15%',
+            barGap: '50%',
             itemStyle: {
               normal: {
+                barBorderRadius: [10, 10, 0, 0],
                 color: new this.$echarts.graphic.LinearGradient(
                   0, 0, 0, 1,
                   [
@@ -127,21 +168,39 @@ export default {
             type: 'line',
             yAxisIndex: 2,
             data: [50, 60, 48, 24, 60],
-            // backgroundStyle: {
-            //   color: '#FDE545'
-            // }
             lineStyle: {
               normal: {
                 color: '#FDE545'
-                // width: '1'
               }
             }
           }]
-      }
+      },
+      flowPriceBarChartsClear: null
     }
   },
   components: {
     BarChart
+  },
+  beforeUpdate () {
+    this.flowLineChartsClear = null
+  },
+  mounted () {
+    // 客流人数
+    // const flowPeople = this.option.series[0].data
+    // //销售额
+    // const sale = this.option.series[1].data
+    // //客单价
+    // const price = this.option.series[1].data
+    this.flowPriceBarChartsClear = setInterval(() => {
+      this.option.series[0].data = []
+      this.option.series[1].data = []
+      this.option.series[2].data = []
+      for (let i = 0; i < 5; i++) {
+        this.option.series[0].data.push(Math.floor(Math.random() * 1000000 + 0))
+        this.option.series[1].data.push(Math.floor(Math.random() * 500 + 0))
+        this.option.series[2].data.push(Math.floor(Math.random() * 500 + 0))
+      }
+    }, 1500)
   }
 }
 </script>
