@@ -21,7 +21,7 @@ export default {
         yAxis: [
           {
             type: 'value',
-            // name: '客流人数',
+            name: '客流人数',
             min: 0,
             max: 500,
             position: 'left',
@@ -39,7 +39,7 @@ export default {
           },
           {
             type: 'value',
-            // name: '销售额',
+            name: '销售额',
             min: 0,
             max: 1000,
             position: 'right',
@@ -54,7 +54,6 @@ export default {
             },
             splitLine: { show: false }
           },
-
           {
             type: 'value',
             name: '客单价',
@@ -85,31 +84,12 @@ export default {
         },
         series: [
           {
-            name: '销售额',
-            data: [490, 170, 390, 180, 160],
-            type: 'bar',
-
-            itemStyle: {
-
-              // 圆角
-              normal: {
-                // barBorderRadius: [10, 10, 0, 0],
-                color: new this.$echarts.graphic.LinearGradient(
-                  0, 0, 0, 1,
-                  [
-                    { offset: 0, color: '#57E6B1' },
-                    { offset: 1, color: '#4080FE' }
-                  ]
-                )
-              }
-            }
-          },
-          {
             name: '客流人数',
             data: [360, 202, 340, 190, 170],
             type: 'bar',
             // showBackground: true,
-            yAxisIndex: 1,
+            barWidth: '15%',
+            barGap: '50%',
             itemStyle: {
               normal: {
                 color: new this.$echarts.graphic.LinearGradient(
@@ -123,17 +103,35 @@ export default {
             }
           },
           {
+            name: '销售额',
+            data: [490, 170, 390, 180, 160],
+            type: 'bar',
+            yAxisIndex: 1,
+            barWidth: '15%',
+            barGap: '50%',
+            itemStyle: {
+              // 圆角
+              normal: {
+                // barBorderRadius: [10, 10, 0, 0],
+                color: new this.$echarts.graphic.LinearGradient(
+                  0, 0, 0, 1,
+                  [
+                    { offset: 0, color: '#57E6B1' },
+                    { offset: 1, color: '#4080FE' }
+                  ]
+                )
+              }
+            }
+          },
+
+          {
             name: '客单价',
             type: 'line',
             yAxisIndex: 2,
             data: [50, 60, 48, 24, 60],
-            // backgroundStyle: {
-            //   color: '#FDE545'
-            // }
             lineStyle: {
               normal: {
                 color: '#FDE545'
-                // width: '1'
               }
             }
           }]
