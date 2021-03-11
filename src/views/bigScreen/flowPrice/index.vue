@@ -132,7 +132,7 @@ export default {
             itemStyle: {
               // 圆角
               normal: {
-                barBorderRadius: [10, 10, 0, 0],
+                // barBorderRadius: [10, 10, 0, 0],
                 color: new this.$echarts.graphic.LinearGradient(
                   0, 0, 0, 1,
                   [
@@ -152,7 +152,7 @@ export default {
             barGap: '50%',
             itemStyle: {
               normal: {
-                barBorderRadius: [10, 10, 0, 0],
+                // barBorderRadius: [10, 10, 0, 0],
                 color: new this.$echarts.graphic.LinearGradient(
                   0, 0, 0, 1,
                   [

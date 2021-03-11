@@ -86,7 +86,7 @@ export default {
             barGap: '50%',
             itemStyle: {
               normal: {
-                barBorderRadius: [10, 10, 0, 0],
+                // barBorderRadius: [10, 10, 0, 0],
                 color: new this.$echarts.graphic.LinearGradient(
                   0, 0, 0, 1,
                   [
@@ -99,17 +99,17 @@ export default {
           }
         ]
       },
-      flowPriceBarChartsClear: null
+      outFlowBarChartsClear: null
     }
   },
   components: {
     BarChart
   },
   beforeUpdate () {
-    this.flowLineChartsClear = null
+    this.outFlowBarChartsClear = null
   },
   mounted () {
-    this.flowPriceBarChartsClear = setInterval(() => {
+    this.outFlowBarChartsClear = setInterval(() => {
       this.option.series[0].data = []
       for (let i = 0; i < 7; i++) {
         this.option.series[0].data.push(Math.floor(Math.random() * 500 + 0))
