@@ -3,7 +3,7 @@
   <div class="contain">
     <div class="titleBox">
       <div class="realTimeFlow">
-        {{ title }}
+        NO.{{index+1}}  {{ title }}
       </div>
       <span>{{ count }}</span>
     </div>
@@ -31,6 +31,9 @@ export default {
     total: {
       type: Number,
       default: 500
+    },
+    index: {
+      type: Number
     }
   }
 }

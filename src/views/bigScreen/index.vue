@@ -126,7 +126,7 @@
             <span>实时出入口客流量排行</span>
           </div>
           <div class="centerRightContext">
-            <RealTimeFlow v-for="(item,i) in currentFlow" :key="i" :title="item.title" :count="item.count" :total="totalCount"></RealTimeFlow>
+            <RealTimeFlow v-for="(item,i) in currentFlow" :key="i" :title="item.title" :count="item.count" :total="totalCount" :index="i"></RealTimeFlow>
           </div>
         </div>
       </div>
@@ -381,6 +381,17 @@ export default {
           status: 1
         })
       }
+    }, 2000)
+    // 动态实时出入口客流排行
+    setInterval(() => {
+      this.totalCount = 0
+      this.currentFlow.forEach((item) => {
+        item.count = Math.floor(Math.random() * 300)
+        this.totalCount += item.count
+      })
+      this.currentFlow.sort((a, b) => {
+        return b.count - a.count
+      })
     }, 2000)
   },
   beforeUpdate () {
