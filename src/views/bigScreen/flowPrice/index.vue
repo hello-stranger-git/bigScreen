@@ -162,18 +162,19 @@ export default {
                 )
               }
             }
-          },
-          {
-            name: '客单价',
-            type: 'line',
-            yAxisIndex: 2,
-            data: [50, 60, 48, 24, 60],
-            lineStyle: {
-              normal: {
-                color: '#FDE545'
-              }
-            }
-          }]
+          }
+          // {
+          //   name: '客单价',
+          //   type: 'line',
+          //   yAxisIndex: 2,
+          //   data: [50, 60, 48, 24, 60],
+          //   lineStyle: {
+          //     normal: {
+          //       color: '#FDE545'
+          //     }
+          //   }
+          // }
+        ]
       },
       flowPriceBarChartsClear: null
     }
@@ -194,11 +195,11 @@ export default {
     this.flowPriceBarChartsClear = setInterval(() => {
       this.option.series[0].data = []
       this.option.series[1].data = []
-      this.option.series[2].data = []
+      // this.option.series[2].data = []
       for (let i = 0; i < 5; i++) {
         this.option.series[0].data.push(Math.floor(Math.random() * 1000000 + 0))
         this.option.series[1].data.push(Math.floor(Math.random() * 500 + 0))
-        this.option.series[2].data.push(Math.floor(Math.random() * 500 + 0))
+        // this.option.series[2].data.push(Math.floor(Math.random() * 500 + 0))
       }
     }, 1500)
   }

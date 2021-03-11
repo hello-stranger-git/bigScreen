@@ -94,37 +94,53 @@
         <div class="rightLenged">
           <Lenged color="#57E6B1" leg="销售额"/>
           <Lenged color="#FE38A7" leg="客流人数"/>
-          <div class="priceLenged">
+          <!-- <div class="priceLenged">
             <span>
 
             </span>
             <span>客单价</span>
-          </div>
+          </div> -->
         </div>
         <div class="leftcontext">
           <FlowPrice/>
         </div>
       </div>
-      <!-- <div class="center"> -->
-        <!-- <div class="centerLeft">
+      <div class="center">
+        <div class="centerLeft">
           <div class="centerLeftTitle">
             <span>客流天气占比</span>
           </div>
-        </div> -->
-        <!-- <div class="centerRight">
+          <div class="centerLeftLenged">
+            <Lenged color="#1BC85E" leg="多云"/>
+            <Lenged color="#FDE545" leg="晴天"/>
+            <Lenged color="#0092FF" leg="雾天"/>
+            <Lenged color="#57E6B1" leg="有雨"/>
+            <Lenged color="#FF9E2B" leg="下雪"/>
+          </div>
+          <div class="centerLeftContext">
+            <FlowWeather/>
+          </div>
+        </div>
+        <div class="centerRight">
           <div class="centerRightTitle">
             <span>实时出入口客流量排行</span>
           </div>
-        </div>
-      </div> -->
-      <!-- <div class="right">
-          <div class="rightTitle">
-            <span>30天客流趋势</span>
+          <div class="centerRightContext">
+            <RealTimeFlow/>
           </div>
-      </div> -->
-      <div class="right">
-          <Similarity v-for="item in similarityData" :key="item.id" :similarity="item.similarityItem"/>
+        </div>
       </div>
+      <div class="right">
+          <div class="rightTitle">
+            <span>店外客流趋势</span>
+          </div>
+          <div class="rightContext">
+            <OutFlow/>
+          </div>
+      </div>
+      <!-- <div class="right">
+          <Similarity v-for="item in similarityData" :key="item.id" :similarity="item.similarityItem"/>
+      </div> -->
     </div>
   </div>
 </template>
@@ -134,8 +150,11 @@ import Lenged from '@/components/lenged.vue'
 import UserItem from '@/components/userItem'
 import FeaturesChart from './features'
 import FlowChart from './flow'
-import Similarity from './similarity'
+import FlowWeather from './flowWeather'
+import RealTimeFlow from './realTimeFlow'
+// import Similarity from './similarity'
 import FlowPrice from './flowPrice'
+import OutFlow from './outFlow'
 export default {
   data () {
     return {
@@ -280,8 +299,11 @@ export default {
     UserItem,
     FeaturesChart,
     FlowChart,
-    Similarity,
-    FlowPrice
+    // Similarity,
+    FlowPrice,
+    FlowWeather,
+    RealTimeFlow,
+    OutFlow
   },
   methods: {
     toggleFullscreen () {
@@ -669,83 +691,126 @@ export default {
       .rem(height, 430px)
     }
   }
-  // .center{
-  //   position: absolute;
-  //   .rem(width,796px);
-  //   .rem(height,462px);
-  //   .rem(top,0rem);
-  //   .rem(left,565px);
-  //   background: #0b0f28;
-  //   &>div{
-  //     background: #101638;
-  //   }
-    // .centerLeft{
-    //   position: absolute;
-    //   .rem(width,394px);
-    //   .rem(height,462px);
-    //   .rem(top,0px);
-    //   .rem(left,0px);
-    //   .centerLeftTitle{
-    //     span{
-    //       .rem(font-size,24px);
-    //       font-weight: 400;
-    //       color: #259CFF;
-    //       position: absolute;
-    //     .rem(top,21px);
-    //     .rem(left,21px);
-    //     }
-    //   }
-    // }
-  //   .centerRight{
-  //     position: absolute;
-  //     .rem(width,394px);
-  //     .rem(height,462px);
-  //     .rem(top,0px);
-  //     .rem(right,0px);
-  //     .centerRightTitle{
-  //       span{
-  //         .rem(font-size,24px);
-  //         font-weight: 400;
-  //         color: #259CFF;
-  //         position: absolute;
-  //       .rem(top,21px);
-  //       .rem(left,21px);
-  //       }
-  //     }
-  //   }
-  // }
-  // .right{
-  //   position: absolute;
-  //   .rem(width,541px);
-  //   .rem(height,462px);
-  //   .rem(top,0rem);
-  //   .rem(left,1370px);
-  //   .rightTitle{
-  //     span{
-  //       .rem(font-size,24px);
-  //       font-weight: 400;
-  //       color: #259CFF;
-  //       position: absolute;
-  //     .rem(top,21px);
-  //     .rem(left,21px);
-  //     }
-  //   }
-  // }
-
-  .right{
+  .center{
     position: absolute;
-    .rem(width,1346px);
+    .rem(width,796px);
     .rem(height,462px);
     .rem(top,0rem);
     .rem(left,565px);
-    .rem(padding-left,35px);
-    .rem(padding-right,35px);
-    .rem(padding-top,25px);
-    .rem(padding-bottom,25px);
-    display:flex;
-     & > :not(:first-child){
-      .rem( margin-left, 19px);
-     }
+    background: #0b0f28;
+    &>div{
+      background: #101638;
+    }
+    .centerLeft{
+      position: absolute;
+      .rem(width,394px);
+      .rem(height,462px);
+      .rem(top,0px);
+      .rem(left,0px);
+      .centerLeftTitle{
+        span{
+          .rem(font-size,24px);
+          font-weight: 400;
+          color: #259CFF;
+          position: absolute;
+        .rem(top,21px);
+        .rem(left,21px);
+        }
+      }
+      .centerLeftLenged{
+        position: absolute;
+        // .rem(width,280px);
+        width:100%;
+        .rem(padding-left,24px);
+        .rem(padding-right,24px);
+        .rem(top,86px);
+        flex-wrap: wrap;
+        // .rem(right,16px);
+        display: flex;
+        // justify-content: space-between;
+        div{
+          &:nth-child(n+2){
+            .rem(margin-left,58px);
+          }
+          &:nth-child(n+4){
+            .rem(margin-left,0);
+            .rem(margin-top,23px);
+          }
+          &:nth-child(n+5){
+            .rem(margin-left,58px);
+          }
+        }
+      }
+
+    .centerLeftContext{
+      position: absolute;
+      .rem(top,90px);
+      .rem(width, 394px);
+      .rem(height, 370px)
+    }
+    }
+    .centerRight{
+      position: absolute;
+      .rem(width,394px);
+      .rem(height,462px);
+      .rem(top,0px);
+      .rem(right,0px);
+      .centerRightTitle{
+        span{
+          .rem(font-size,24px);
+          font-weight: 400;
+          color: #259CFF;
+          position: absolute;
+        .rem(top,21px);
+        .rem(left,21px);
+        }
+      }
+      .centerRightContext{
+        position: absolute;
+        .rem(top,90px);
+        .rem(width, 394px);
+        .rem(height, 300px)
+      }
+    }
   }
+  .right{
+    position: absolute;
+    .rem(width,541px);
+    .rem(height,462px);
+    .rem(top,0rem);
+    .rem(left,1370px);
+    .rightTitle{
+      span{
+        .rem(font-size,24px);
+        font-weight: 400;
+        color: #259CFF;
+        position: absolute;
+      .rem(top,21px);
+      .rem(left,21px);
+      }
+    }
+    .rightContext{
+      position: absolute;
+      .rem(top,29px);
+      .rem(width, 541px);
+      .rem(height, 430px)
+    }
+  }
+
+  // .right{
+  //   position: absolute;
+  //   .rem(width,1346px);
+  //   .rem(height,462px);
+  //   .rem(top,0rem);
+  //   .rem(left,565px);
+  //   .rem(padding-left,35px);
+  //   .rem(padding-right,35px);
+  //   .rem(padding-top,25px);
+  //   .rem(padding-bottom,25px);
+  //   display:flex;
+  //    & > :not(:first-child){
+  //     .rem( margin-left, 19px);
+  //    }
+  // }
 }
 </style>
