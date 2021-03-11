@@ -11,5 +11,8 @@ export default {
   }
 }
 </script>
-<style>
+<style lang="less">
+#app{
+  .rem(font-size,12px);
+}
 </style>

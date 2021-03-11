@@ -86,7 +86,7 @@ export default {
             barGap: '50%',
             itemStyle: {
               normal: {
-                barBorderRadius: [10, 10, 0, 0],
+                // barBorderRadius: [10, 10, 0, 0],
                 color: new this.$echarts.graphic.LinearGradient(
                   0, 0, 0, 1,
                   [
