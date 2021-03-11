@@ -767,7 +767,7 @@ export default {
       }
       .centerRightContext{
         position: absolute;
-        .rem(top,90px);
+        .rem(top,112px);
         .rem(width, 394px);
         .rem(height, 300px)
       }
