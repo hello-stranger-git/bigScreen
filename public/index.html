@@ -7,7 +7,14 @@
     <link rel="icon" href="<%= BASE_URL %>favicon.ico">
     <title><%= htmlWebpackPlugin.options.title %></title>
   </head>
-  <body>
+  <script>
+    function showMsg () {
+      let html = document.documentElement.clientWidth;
+      document.documentElement.style.fontSize = html/10+'px'
+    }
+    this.showMsg()
+  </script>
+  <body  onresize="showMsg()">
     <noscript>
       <strong>We're sorry but <%= htmlWebpackPlugin.options.title %> doesn't work properly without JavaScript enabled. Please enable it to continue.</strong>
     </noscript>

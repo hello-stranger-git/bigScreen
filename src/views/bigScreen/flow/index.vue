@@ -86,7 +86,7 @@ export default {
                 color: new this.$echarts.graphic.LinearGradient(0, 0, 0, 1, [
                   {
                     offset: 0,
-                    color: '#FEA8C5'
+                    color: '#CE5A60'
                   },
                   {
                     offset: 1,
@@ -102,7 +102,7 @@ export default {
             smooth: true, // 设置线的平滑度
             itemStyle: {
               normal: {
-                color: '#FEA8C5', // 设置覆盖颜色
+                color: '#CE5A60', // 设置覆盖颜色
                 label: {
                   show: false, // 显示值
                   // position: "top", //值在上方显示
@@ -126,7 +126,7 @@ export default {
                 color: new this.$echarts.graphic.LinearGradient(0, 0, 0, 1, [
                   {
                     offset: 0,
-                    color: '#F1835B'
+                    color: '#0092FF'
                   },
                   {
                     offset: 1,
@@ -143,7 +143,7 @@ export default {
 
             itemStyle: {
               normal: {
-                color: '#F1835B', // 设置覆盖颜色
+                color: '#0092FF', // 设置覆盖颜色
                 label: {
                   show: false, // 显示值
                   // position: "top", //值在上方显示
@@ -180,7 +180,7 @@ export default {
             smooth: true,
             itemStyle: {
               normal: {
-                color: '#56BE9B', // 设置覆盖颜色
+                color: '#15D9D2', // 设置覆盖颜色
                 label: {
                   show: false, // 显示值
                   // position: "top", //值在上方显示
