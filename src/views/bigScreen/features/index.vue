@@ -21,7 +21,8 @@ export default {
           show: false
         },
         tooltip: {
-          trigger: 'item'
+          trigger: 'item',
+          formatter: '{c}人 {d}%'
         },
         legend: {
           orient: 'vertical',
@@ -36,28 +37,28 @@ export default {
             data: [
               {
                 value: 64,
-                name: '64人 27.75%',
+                // name: '64人 27.75%',
                 itemStyle: {
                   color: '#0092FF'
                 }
               },
               {
                 value: 74,
-                name: '74人 32.25%',
+                // name: '74人 32.25%',
                 itemStyle: {
                   color: '#CE5A60'
                 }
               },
               {
                 value: 47,
-                name: '47人 18.25%',
+                // name: '47人 18.25%',
                 itemStyle: {
                   color: '#FDE545'
                 }
               },
               {
                 value: 54,
-                name: '54人 22.75%',
+                // name: '54人 22.75%',
                 itemStyle: {
                   color: '#1BC85E'
                 }
@@ -75,6 +76,7 @@ export default {
               length: 15
             },
             label: {
+              formatter: '{c}人 {d}%',
               fontWeight: 400,
               color: '#EFFFFB',
               fontSize: 18
@@ -110,15 +112,15 @@ export default {
       const totle = number1 + number2 + number3 + number4
       this.totlePeople = totle
       this.option.series[0].data[0].value = number1
-      this.option.series[0].data[0].name = `${number1}人 ${((number1 / totle) * 100).toFixed(2)}%`
+      // this.option.series[0].data[0].name = `${number1}人 ${((number1 / totle) * 100).toFixed(2)}%`
       this.option.series[0].data[1].value = number2
-      this.option.series[0].data[1].name = `${number2}人 ${((number2 / totle) * 100).toFixed(2)}%`
+      // this.option.series[0].data[1].name = `${number2}人 ${((number2 / totle) * 100).toFixed(2)}%`
 
       this.option.series[0].data[2].value = number3
-      this.option.series[0].data[2].name = `${number3}人 ${((number3 / totle) * 100).toFixed(2)}%`
+      // this.option.series[0].data[2].name = `${number3}人 ${((number3 / totle) * 100).toFixed(2)}%`
 
       this.option.series[0].data[3].value = number4
-      this.option.series[0].data[3].name = `${number4}人 ${((number4 / totle) * 100).toFixed(2)}%`
+      // this.option.series[0].data[3].name = `${number4}人 ${((number4 / totle) * 100).toFixed(2)}%`
     }, 1500)
   }
 }
