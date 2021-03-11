@@ -670,7 +670,7 @@ export default {
     }
     .rightLenged{
       position: absolute;
-      .rem(width,310px);
+      .rem(width,260px);
       .rem(top,26px);
       .rem(right,16px);
       display: flex;
