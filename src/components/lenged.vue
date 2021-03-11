@@ -1,5 +1,5 @@
 <template>
-  <div>
+  <div class="lenged">
     <span class="pro" :style="{'background':color}"></span>
     <span class="name">{{ leg }}</span>
   </div>

@@ -6,7 +6,7 @@
       </div>
       <div class="line"></div>
       <div class="center" @click="toggleFullscreen">
-        <span>华为店望</span>
+        <span>乐店客好望</span>
       </div>
       <div class="right">
       </div>
@@ -111,11 +111,15 @@
             <span>客流天气占比</span>
           </div>
           <div class="centerLeftLenged">
+            <div class="centerLeftLengedTop">
             <Lenged color="#1BC85E" leg="多云"/>
             <Lenged color="#FDE545" leg="晴天"/>
-            <Lenged color="#0092FF" leg="雾天"/>
-            <Lenged color="#57E6B1" leg="有雨"/>
+            <Lenged color="#CE5A60" leg="雾天"/>
+            </div>
+            <div class="centerLeftLengedBottom">
+            <Lenged color="#0092FF" leg="有雨"/>
             <Lenged color="#FF9E2B" leg="下雪"/>
+            </div>
           </div>
           <div class="centerLeftContext">
             <FlowWeather/>
@@ -126,7 +130,7 @@
             <span>实时出入口客流量排行</span>
           </div>
           <div class="centerRightContext">
-            <RealTimeFlow v-for="(item,i) in currentFlow" :key="i" :title="item.title" :count="item.count" :total="totalCount" :index="i"></RealTimeFlow>
+            <RealTimeFlow/>
           </div>
         </div>
       </div>
@@ -167,47 +171,47 @@ export default {
           age: '35~50岁',
           time: '19:45:18',
           status: 1
+        },
+        {
+          id: 2,
+          icon: require('@/assets/image/kq/now.png'),
+          name: '廖某某',
+          age: '35~50岁',
+          time: '19:45:18',
+          status: 1
+        },
+        {
+          id: 3,
+          icon: require('@/assets/image/kq/now.png'),
+          name: '廖某某',
+          age: '35~50岁',
+          time: '19:45:18',
+          status: 1
+        },
+        {
+          id: 4,
+          icon: require('@/assets/image/kq/now.png'),
+          name: '廖某某',
+          age: '35~50岁',
+          time: '19:45:18',
+          status: 1
+        },
+        {
+          id: 5,
+          icon: require('@/assets/image/kq/now.png'),
+          name: '廖某某',
+          age: '35~50岁',
+          time: '19:45:18',
+          status: 1
+        },
+        {
+          id: 6,
+          icon: require('@/assets/image/kq/now.png'),
+          name: '廖某某',
+          age: '35~50岁',
+          time: '19:45:18',
+          status: 1
         }
-        // {
-        //   id: 2,
-        //   icon: require('@/assets/image/kq/now.png'),
-        //   name: '廖某某',
-        //   age: '35~50岁',
-        //   time: '19:45:18',
-        //   status: 1
-        // },
-        // {
-        //   id: 3,
-        //   icon: require('@/assets/image/kq/now.png'),
-        //   name: '廖某某',
-        //   age: '35~50岁',
-        //   time: '19:45:18',
-        //   status: 1
-        // },
-        // {
-        //   id: 4,
-        //   icon: require('@/assets/image/kq/now.png'),
-        //   name: '廖某某',
-        //   age: '35~50岁',
-        //   time: '19:45:18',
-        //   status: 1
-        // },
-        // {
-        //   id: 5,
-        //   icon: require('@/assets/image/kq/now.png'),
-        //   name: '廖某某',
-        //   age: '35~50岁',
-        //   time: '19:45:18',
-        //   status: 1
-        // },
-        // {
-        //   id: 6,
-        //   icon: require('@/assets/image/kq/now.png'),
-        //   name: '廖某某',
-        //   age: '35~50岁',
-        //   time: '00:45:18',
-        //   status: 1
-        // }
       ],
       imgNumber: 1, // 模拟更换头像
       userDataClear: null,
@@ -291,9 +295,7 @@ export default {
             }
           }
         }
-      ],
-      currentFlow: [{ title: '二楼南扶梯西', count: 256 }, { title: '微店货梯门', count: 101 }, { title: '正大门', count: 155 }, { title: '二楼北扶梯东', count: 65 }],
-      totalCount: 500
+      ]
     }
   },
   components: {
@@ -337,62 +339,29 @@ export default {
       } else if (document.msExitFullscreen) {
         document.msExitFullscreen()
       }
-    }
+    },
     // 模拟后台改变今日进店用户
-    // userDataAxios () {
-    //   this.userDataClear = setInterval(() => {
-    //     this.userData.splice(0, 1)
-    //     if (this.imgNumber === 1) {
-    //       this.imgNumber = 2
-    //     } else {
-    //       this.imgNumber = 1
-    //     }
-    //     this.userData.push({
-    //       id: new Date().getTime(),
-    //       icon: require('@/assets/image/user' + this.imgNumber + '.png'),
-    //       sex: (this.imgNumber - 1),
-    //       age: '35~50岁',
-    //       time: '19:45:18'
-    //     })
-    //   }, 1500)
-    // }
+    userDataAxios () {
+      this.userDataClear = setInterval(() => {
+        this.userData.splice(0, 1)
+        if (this.imgNumber === 1) {
+          this.imgNumber = 2
+        } else {
+          this.imgNumber = 1
+        }
+        this.userData.push({
+          id: new Date().getTime(),
+          icon: require('@/assets/image/user' + this.imgNumber + '.png'),
+          sex: (this.imgNumber - 1),
+          age: '35~50岁',
+          time: '19:45:18'
+        })
+      }, 1500)
+    }
 
   },
   mounted () {
     // this.userDataAxios()
-    this.userDataClear = setInterval(() => {
-      if (this.userData.length >= 6) {
-        this.userData.pop()
-        this.userData.unshift({
-          id: new Date().getTime(),
-          icon: require('@/assets/image/kq/now.png'),
-          name: '廖某某',
-          age: '35~40',
-          time: '08:52:12',
-          status: 1
-        })
-      } else {
-        this.userData.unshift({
-          id: new Date().getTime(),
-          icon: require('@/assets/image/kq/now.png'),
-          name: '廖某某',
-          age: '35~40',
-          time: '08:52:12',
-          status: 1
-        })
-      }
-    }, 2000)
-    // 动态实时出入口客流排行
-    setInterval(() => {
-      this.totalCount = 0
-      this.currentFlow.forEach((item) => {
-        item.count = Math.floor(Math.random() * 300)
-        this.totalCount += item.count
-      })
-      this.currentFlow.sort((a, b) => {
-        return b.count - a.count
-      })
-    }, 2000)
   },
   beforeUpdate () {
     this.userDataClear = null
@@ -754,27 +723,24 @@ export default {
       }
       .centerLeftLenged{
         position: absolute;
-        // .rem(width,280px);
         width:100%;
         .rem(padding-left,24px);
         .rem(padding-right,24px);
         .rem(top,86px);
-        flex-wrap: wrap;
-        // .rem(right,16px);
-        display: flex;
-        // justify-content: space-between;
-        div{
-          &:nth-child(n+2){
-            .rem(margin-left,58px);
-          }
-          &:nth-child(n+4){
-            .rem(margin-left,0);
-            .rem(margin-top,23px);
-          }
-          &:nth-child(n+5){
-            .rem(margin-left,58px);
+        .centerLeftLengedTop{
+          display: flex;
+          .rem(margin-bottom,18px );
+          div:nth-child(n+2){
+              .rem(margin-left,58px);
           }
         }
+        .centerLeftLengedBottom{
+          display: flex;
+              div:nth-child(n+2){
+              .rem(margin-left,58px);
+          }
+        }
+
       }
 
     .centerLeftContext{
@@ -802,10 +768,9 @@ export default {
       }
       .centerRightContext{
         position: absolute;
-        overflow: hidden;
         .rem(top,112px);
         .rem(width, 394px);
-        .rem(height, 344px);
+        .rem(height, 300px)
       }
     }
   }
