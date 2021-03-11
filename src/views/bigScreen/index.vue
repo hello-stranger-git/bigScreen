@@ -744,9 +744,9 @@ export default {
 
     .centerLeftContext{
       position: absolute;
-      .rem(top,90px);
+      .rem(top,170px);
       .rem(width, 394px);
-      .rem(height, 370px)
+      .rem(height, 290px)
     }
     }
     .centerRight{
