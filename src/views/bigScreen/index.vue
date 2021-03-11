@@ -6,7 +6,7 @@
       </div>
       <div class="line"></div>
       <div class="center" @click="toggleFullscreen">
-        <span>乐店客好望</span>
+        <span>华为店望</span>
       </div>
       <div class="right">
       </div>
@@ -455,8 +455,11 @@ export default {
       position: absolute;
       span{
         position: absolute;
-        .rem(bottom,15px);
-        .rem(left,131px);
+        top:50%;
+        left: 50%;
+        transform: translate(-50%,-50%);
+        // .rem(bottom,15px);
+        // .rem(left,131px);
         .rem(font-size,36px);
         font-weight: bold;
         color: #1E86DF;
