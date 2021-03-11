@@ -22,7 +22,7 @@ export default {
         },
         tooltip: {
           trigger: 'item',
-          formatter: '{c}人 {d}%'
+          formatter: '{b} {c}人 {d}%'
         },
         legend: {
           orient: 'vertical',
@@ -37,28 +37,28 @@ export default {
             data: [
               {
                 value: 64,
-                // name: '64人 27.75%',
+                name: '中年',
                 itemStyle: {
                   color: '#0092FF'
                 }
               },
               {
                 value: 74,
-                // name: '74人 32.25%',
+                name: '老年',
                 itemStyle: {
                   color: '#CE5A60'
                 }
               },
               {
                 value: 47,
-                // name: '47人 18.25%',
+                name: '少年',
                 itemStyle: {
                   color: '#FDE545'
                 }
               },
               {
                 value: 54,
-                // name: '54人 22.75%',
+                name: '青年',
                 itemStyle: {
                   color: '#1BC85E'
                 }
