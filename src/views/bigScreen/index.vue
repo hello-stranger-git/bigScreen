@@ -384,10 +384,10 @@ export default {
     }, 2000)
     // 动态实时出入口客流排行
     setInterval(() => {
-      this.totalCount = 0
+      // this.totalCount = 0
       this.currentFlow.forEach((item) => {
-        item.count = Math.floor(Math.random() * 300)
-        this.totalCount += item.count
+        item.count = Math.floor(Math.random() * 500)
+        // this.totalCount += item.count
       })
       this.currentFlow.sort((a, b) => {
         return b.count - a.count
