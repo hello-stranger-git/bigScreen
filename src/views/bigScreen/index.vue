@@ -126,7 +126,7 @@
             <span>实时出入口客流量排行</span>
           </div>
           <div class="centerRightContext">
-            <RealTimeFlow/>
+            <RealTimeFlow v-for="(item,i) in currentFlow" :key="i" :title="item.title" :count="item.count" :total="totalCount"></RealTimeFlow>
           </div>
         </div>
       </div>
@@ -291,7 +291,9 @@ export default {
             }
           }
         }
-      ]
+      ],
+      currentFlow: [{ title: '二楼南扶梯西', count: 256 }, { title: '微店货梯门', count: 101 }, { title: '正大门', count: 155 }, { title: '二楼北扶梯东', count: 65 }],
+      totalCount: 500
     }
   },
   components: {
@@ -767,9 +769,10 @@ export default {
       }
       .centerRightContext{
         position: absolute;
+        overflow: hidden;
         .rem(top,112px);
         .rem(width, 394px);
-        .rem(height, 300px)
+        .rem(height, 344px);
       }
     }
   }
