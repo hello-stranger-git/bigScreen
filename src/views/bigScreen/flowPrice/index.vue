@@ -44,7 +44,7 @@ export default {
             max: 500,
             position: 'left',
             axisLine: {
-              show: true,
+              show: false,
               lineStyle: {
                 color: '#1189E2'
               }
@@ -56,7 +56,7 @@ export default {
               showMinLabel: false
             },
             splitLine: {
-              show: false,
+              show: true,
               lineStyle: {
                 color: '#4080fe1f'
               }
@@ -69,7 +69,7 @@ export default {
             max: 1000000,
             position: 'right',
             axisLine: {
-              show: true,
+              show: false,
               lineStyle: {
                 color: '#1189E2'
               }

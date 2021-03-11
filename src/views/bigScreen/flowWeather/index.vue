@@ -126,11 +126,11 @@ export default {
     this.featuresCircelChartsClear = setInterval(() => {
       const seriesData = this.option.series[0].data.concat()
       // 随机生成1到100的整数
-      const number1 = Math.floor(Math.random() * (500 - 1) + 1)
-      const number2 = Math.floor(Math.random() * (500 - 1) + 1)
-      const number3 = Math.floor(Math.random() * (500 - 1) + 1)
-      const number4 = Math.floor(Math.random() * (500 - 1) + 1)
-      const number5 = Math.floor(Math.random() * (500 - 1) + 1)
+      const number1 = Math.floor(Math.random() * (500 - 1) + 100)
+      const number2 = Math.floor(Math.random() * (500 - 1) + 100)
+      const number3 = Math.floor(Math.random() * (500 - 1) + 100)
+      const number4 = Math.floor(Math.random() * (500 - 1) + 100)
+      const number5 = Math.floor(Math.random() * (500 - 1) + 100)
       seriesData[0].value = number1
       seriesData[1].value = number2
       seriesData[2].value = number3

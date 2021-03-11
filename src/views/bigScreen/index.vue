@@ -362,6 +362,39 @@ export default {
   },
   mounted () {
     // this.userDataAxios()
+    this.userDataClear = setInterval(() => {
+      if (this.userData.length >= 6) {
+        this.userData.pop()
+        this.userData.unshift({
+          id: new Date().getTime(),
+          icon: require('@/assets/image/kq/now.png'),
+          name: '廖某某',
+          age: '35~40',
+          time: '08:52:12',
+          status: 1
+        })
+      } else {
+        this.userData.unshift({
+          id: new Date().getTime(),
+          icon: require('@/assets/image/kq/now.png'),
+          name: '廖某某',
+          age: '35~40',
+          time: '08:52:12',
+          status: 1
+        })
+      }
+    }, 2000)
+    // 动态实时出入口客流排行
+    setInterval(() => {
+      // this.totalCount = 0
+      this.currentFlow.forEach((item) => {
+        item.count = Math.floor(Math.random() * 500)
+        // this.totalCount += item.count
+      })
+      this.currentFlow.sort((a, b) => {
+        return b.count - a.count
+      })
+    }, 2000)
   },
   beforeUpdate () {
     this.userDataClear = null
@@ -650,7 +683,7 @@ export default {
     }
     .rightLenged{
       position: absolute;
-      .rem(width,310px);
+      .rem(width,260px);
       .rem(top,26px);
       .rem(right,16px);
       display: flex;
