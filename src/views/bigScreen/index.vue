@@ -130,7 +130,7 @@
             <span>实时出入口客流量排行</span>
           </div>
           <div class="centerRightContext">
-            <RealTimeFlow/>
+            <RealTimeFlow v-for="(item,i) in currentFlow" :key="i" :title="item.title" :count="item.count" :total="totalCount" :index="i"></RealTimeFlow>
           </div>
         </div>
       </div>
@@ -171,47 +171,47 @@ export default {
           age: '35~50岁',
           time: '19:45:18',
           status: 1
-        },
-        {
-          id: 2,
-          icon: require('@/assets/image/kq/now.png'),
-          name: '廖某某',
-          age: '35~50岁',
-          time: '19:45:18',
-          status: 1
-        },
-        {
-          id: 3,
-          icon: require('@/assets/image/kq/now.png'),
-          name: '廖某某',
-          age: '35~50岁',
-          time: '19:45:18',
-          status: 1
-        },
-        {
-          id: 4,
-          icon: require('@/assets/image/kq/now.png'),
-          name: '廖某某',
-          age: '35~50岁',
-          time: '19:45:18',
-          status: 1
-        },
-        {
-          id: 5,
-          icon: require('@/assets/image/kq/now.png'),
-          name: '廖某某',
-          age: '35~50岁',
-          time: '19:45:18',
-          status: 1
-        },
-        {
-          id: 6,
-          icon: require('@/assets/image/kq/now.png'),
-          name: '廖某某',
-          age: '35~50岁',
-          time: '19:45:18',
-          status: 1
         }
+        // {
+        //   id: 2,
+        //   icon: require('@/assets/image/kq/now.png'),
+        //   name: '廖某某',
+        //   age: '35~50岁',
+        //   time: '19:45:18',
+        //   status: 1
+        // },
+        // {
+        //   id: 3,
+        //   icon: require('@/assets/image/kq/now.png'),
+        //   name: '廖某某',
+        //   age: '35~50岁',
+        //   time: '19:45:18',
+        //   status: 1
+        // },
+        // {
+        //   id: 4,
+        //   icon: require('@/assets/image/kq/now.png'),
+        //   name: '廖某某',
+        //   age: '35~50岁',
+        //   time: '19:45:18',
+        //   status: 1
+        // },
+        // {
+        //   id: 5,
+        //   icon: require('@/assets/image/kq/now.png'),
+        //   name: '廖某某',
+        //   age: '35~50岁',
+        //   time: '19:45:18',
+        //   status: 1
+        // },
+        // {
+        //   id: 6,
+        //   icon: require('@/assets/image/kq/now.png'),
+        //   name: '廖某某',
+        //   age: '35~50岁',
+        //   time: '19:45:18',
+        //   status: 1
+        // }
       ],
       imgNumber: 1, // 模拟更换头像
       userDataClear: null,
@@ -295,7 +295,9 @@ export default {
             }
           }
         }
-      ]
+      ],
+      currentFlow: [{ title: '二楼南扶梯西', count: 256 }, { title: '微店货梯门', count: 101 }, { title: '正大门', count: 155 }, { title: '二楼北扶梯东', count: 65 }],
+      totalCount: 500
     }
   },
   components: {
@@ -339,25 +341,25 @@ export default {
       } else if (document.msExitFullscreen) {
         document.msExitFullscreen()
       }
-    },
-    // 模拟后台改变今日进店用户
-    userDataAxios () {
-      this.userDataClear = setInterval(() => {
-        this.userData.splice(0, 1)
-        if (this.imgNumber === 1) {
-          this.imgNumber = 2
-        } else {
-          this.imgNumber = 1
-        }
-        this.userData.push({
-          id: new Date().getTime(),
-          icon: require('@/assets/image/user' + this.imgNumber + '.png'),
-          sex: (this.imgNumber - 1),
-          age: '35~50岁',
-          time: '19:45:18'
-        })
-      }, 1500)
     }
+    // 模拟后台改变今日进店用户
+    // userDataAxios () {
+    //   this.userDataClear = setInterval(() => {
+    //     this.userData.splice(0, 1)
+    //     if (this.imgNumber === 1) {
+    //       this.imgNumber = 2
+    //     } else {
+    //       this.imgNumber = 1
+    //     }
+    //     this.userData.push({
+    //       id: new Date().getTime(),
+    //       icon: require('@/assets/image/user' + this.imgNumber + '.png'),
+    //       sex: (this.imgNumber - 1),
+    //       age: '35~50岁',
+    //       time: '19:45:18'
+    //     })
+    //   }, 1500)
+    // }
 
   },
   mounted () {
