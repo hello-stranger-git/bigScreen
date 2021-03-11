@@ -337,30 +337,30 @@ export default {
       } else if (document.msExitFullscreen) {
         document.msExitFullscreen()
       }
-    },
-    // 模拟后台改变今日进店用户
-    userDataAxios () {
-      this.userDataClear = setInterval(() => {
-        this.userData.splice(0, 1)
-        if (this.imgNumber === 1) {
-          this.imgNumber = 2
-        } else {
-          this.imgNumber = 1
-        }
-        this.userData.push({
-          id: new Date().getTime(),
-          icon: require('@/assets/image/user' + this.imgNumber + '.png'),
-          sex: (this.imgNumber - 1),
-          age: '35~50岁',
-          time: '19:45:18'
-        })
-      }, 1500)
     }
+    // 模拟后台改变今日进店用户
+    // userDataAxios () {
+    //   this.userDataClear = setInterval(() => {
+    //     this.userData.splice(0, 1)
+    //     if (this.imgNumber === 1) {
+    //       this.imgNumber = 2
+    //     } else {
+    //       this.imgNumber = 1
+    //     }
+    //     this.userData.push({
+    //       id: new Date().getTime(),
+    //       icon: require('@/assets/image/user' + this.imgNumber + '.png'),
+    //       sex: (this.imgNumber - 1),
+    //       age: '35~50岁',
+    //       time: '19:45:18'
+    //     })
+    //   }, 1500)
+    // }
 
   },
   mounted () {
     // this.userDataAxios()
-    setInterval(() => {
+    this.userDataClear = setInterval(() => {
       if (this.userData.length >= 6) {
         this.userData.pop()
         this.userData.unshift({
