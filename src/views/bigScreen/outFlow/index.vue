@@ -99,17 +99,17 @@ export default {
           }
         ]
       },
-      flowPriceBarChartsClear: null
+      outFlowBarChartsClear: null
     }
   },
   components: {
     BarChart
   },
   beforeUpdate () {
-    this.flowLineChartsClear = null
+    this.outFlowBarChartsClear = null
   },
   mounted () {
-    this.flowPriceBarChartsClear = setInterval(() => {
+    this.outFlowBarChartsClear = setInterval(() => {
       this.option.series[0].data = []
       for (let i = 0; i < 7; i++) {
         this.option.series[0].data.push(Math.floor(Math.random() * 500 + 0))
