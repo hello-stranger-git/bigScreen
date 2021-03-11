@@ -36,28 +36,28 @@ export default {
             radius: ['50%', '80%'],
             data: [
               {
-                value: 64,
+                value: 15,
                 name: '中年',
                 itemStyle: {
                   color: '#0092FF'
                 }
               },
               {
-                value: 74,
+                value: 200,
                 name: '老年',
                 itemStyle: {
                   color: '#CE5A60'
                 }
               },
               {
-                value: 47,
+                value: 20,
                 name: '少年',
                 itemStyle: {
                   color: '#FDE545'
                 }
               },
               {
-                value: 54,
+                value: 12,
                 name: '青年',
                 itemStyle: {
                   color: '#1BC85E'
@@ -105,10 +105,11 @@ export default {
   mounted () {
     this.featuresCircelChartsClear = setInterval(() => {
       // 随机生成1到100的整数
-      const number1 = Math.floor(Math.random() * (100 - 1) + 1)
-      const number2 = number1 + 32
-      const number3 = number1 + 42
-      const number4 = number1 + 22
+      // const number1 = Math.floor(Math.random() * (100 - 1) + 1)
+      const number1 = this.option.series[0].data[0].value + 1
+      const number2 = this.option.series[0].data[1].value
+      const number3 = this.option.series[0].data[2].value
+      const number4 = this.option.series[0].data[3].value + 1
       const totle = number1 + number2 + number3 + number4
       this.totlePeople = totle
       this.option.series[0].data[0].value = number1
@@ -121,7 +122,7 @@ export default {
 
       this.option.series[0].data[3].value = number4
       // this.option.series[0].data[3].name = `${number4}人 ${((number4 / totle) * 100).toFixed(2)}%`
-    }, 1500)
+    }, 3000)
   }
 }
 </script>

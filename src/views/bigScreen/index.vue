@@ -77,9 +77,9 @@
           <span>今日客流趋势</span>
         </div>
         <div class="rightLenged">
-          <Lenged color="#CE5A60" leg="老年"/>
-          <Lenged color="#0092FF" leg="中年"/>
-          <Lenged color="#1BC85E" leg="青年"/>
+          <Lenged color="#CE5A60" leg="今天"/>
+          <Lenged color="#0092FF" leg="昨天"/>
+          <Lenged color="#1BC85E" leg="前天"/>
         </div>
         <div class="flow">
           <FlowChart/>
@@ -118,7 +118,7 @@
             </div>
             <div class="centerLeftLengedBottom">
             <Lenged color="#0092FF" leg="有雨"/>
-            <Lenged color="#FF9E2B" leg="下雪"/>
+            <!-- <Lenged color="#FF9E2B" leg="下雪"/> -->
             </div>
           </div>
           <div class="centerLeftContext">

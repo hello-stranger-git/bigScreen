@@ -61,6 +61,8 @@ export default {
         ],
         yAxis: [
           {
+            min: 0,
+            max: 3000,
             type: 'value',
             axisLabel: {
               color: '#1184D9',
@@ -77,7 +79,7 @@ export default {
         ],
         series: [
           {
-            name: '老年',
+            name: '今天',
             type: 'line',
             symbol: 'none', // 去掉线上的小圆点
             areaStyle: {
@@ -95,7 +97,7 @@ export default {
                 ])
               }
             },
-            data: [320, 132, 201, 334, 190, 130, 220, 100],
+            data: [2800, 1320, 2010, 2240, 1900, 1300, 2200, 1000],
             lineStyle: {
               width: 3
             },
@@ -116,7 +118,7 @@ export default {
           },
 
           {
-            name: '中年',
+            name: '昨天',
             type: 'line',
             symbol: 'none', // 去掉线上的小圆点
             // stack: "总量",
@@ -135,7 +137,7 @@ export default {
                 ])
               }
             },
-            data: [220, 402, 231, 134, 190, 230, 120, 150],
+            data: [1500, 1502, 1810, 2340, 2000, 1800, 1600, 1500],
             lineStyle: {
               width: 3
             },
@@ -156,7 +158,7 @@ export default {
             }
           },
           {
-            name: '青年',
+            name: '前天',
             symbol: 'none', // 去掉线上的小圆点
             type: 'line',
             areaStyle: {
@@ -173,7 +175,7 @@ export default {
                 ])
               }
             },
-            data: [220, 302, 181, 234, 210, 290, 150, 80],
+            data: [1000, 1802, 1301, 1304, 1800, 1600, 1500, 2100],
             lineStyle: {
               width: 3
             },
@@ -205,14 +207,14 @@ export default {
   mounted () {
     this.flowLineChartsClear = setInterval(() => {
       this.option.series[0].data = []
-      this.option.series[1].data = []
-      this.option.series[2].data = []
+      // this.option.series[1].data = []
+      // this.option.series[2].data = []
       for (let i = 0; i < 8; i++) {
-        this.option.series[0].data.push(Math.floor(Math.random() * 500 + 100))
-        this.option.series[1].data.push(Math.floor(Math.random() * 500 + 100))
-        this.option.series[2].data.push(Math.floor(Math.random() * 500 + 100))
+        this.option.series[0].data.push(Math.floor(Math.random() * 2000 + 500))
+        // this.option.series[1].data.push(Math.floor(Math.random() * 500 + 100))
+        // this.option.series[2].data.push(Math.floor(Math.random() * 500 + 100))
       }
-    }, 1500)
+    }, 1800)
   }
 }
 </script>

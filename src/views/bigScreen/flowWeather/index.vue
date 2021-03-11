@@ -41,40 +41,40 @@ export default {
             center: ['50%', '50%'],
             data: [
               {
-                value: 24,
+                value: 3500,
                 name: '多云',
                 itemStyle: {
                   color: '#1BC85E'
                 }
               },
               {
-                value: 21,
+                value: 4800,
                 name: '晴天',
                 itemStyle: {
                   color: '#FDE545'
                 }
               },
               {
-                value: 20,
+                value: 2700,
                 name: '雾天',
                 itemStyle: {
                   color: '#CE5A60'
                 }
               },
               {
-                value: 19,
+                value: 1900,
                 name: '有雨 ',
                 itemStyle: {
                   color: '#0092FF'
                 }
-              },
-              {
-                value: 16,
-                name: '下雪',
-                itemStyle: {
-                  color: '#FF9E2B'
-                }
               }
+              // {
+              //   value: 16,
+              //   name: '下雪',
+              //   itemStyle: {
+              //     color: '#FF9E2B'
+              //   }
+              // }
             ].sort(function (a, b) { return a.value - b.value }),
             roseType: 'radius',
             label: {
@@ -100,7 +100,7 @@ export default {
                 color: '#EFFFFB'
               },
               length: 10,
-              length2: 20
+              length2: 5
             },
             itemStyle: {
               color: '#c23531',
@@ -109,7 +109,7 @@ export default {
             },
             animationType: 'scale',
             animationEasing: 'elasticOut',
-            animation: false,
+            animation: true,
             animationDelay: function (idx) {
               return Math.random() * 200
             }
@@ -123,21 +123,21 @@ export default {
     this.featuresCircelChartsClear = null
   },
   mounted () {
-    this.featuresCircelChartsClear = setInterval(() => {
-      const seriesData = this.option.series[0].data.concat()
-      // 随机生成1到100的整数
-      const number1 = Math.floor(Math.random() * (500 - 1) + 100)
-      const number2 = Math.floor(Math.random() * (500 - 1) + 100)
-      const number3 = Math.floor(Math.random() * (500 - 1) + 100)
-      const number4 = Math.floor(Math.random() * (500 - 1) + 100)
-      const number5 = Math.floor(Math.random() * (500 - 1) + 100)
-      seriesData[0].value = number1
-      seriesData[1].value = number2
-      seriesData[2].value = number3
-      seriesData[3].value = number4
-      seriesData[4].value = number5
-      this.option.series[0].data = seriesData.sort(function (a, b) { return a.value - b.value })
-    }, 1500)
+    // this.featuresCircelChartsClear = setInterval(() => {
+    //   const seriesData = this.option.series[0].data.concat()
+    //   // 随机生成1到100的整数
+    //   const number1 = Math.floor(Math.random() * (4800 - 4000) + 4000)
+    //   const number2 = Math.floor(Math.random() * (5000 - 3000) + 3000)
+    //   const number3 = Math.floor(Math.random() * (4500 - 2500) + 2500)
+    //   const number4 = Math.floor(Math.random() * (3000 - 500) + 500)
+    //   // const number5 = Math.floor(Math.random() * (500 - 1) + 100)
+    //   seriesData[0].value = number1
+    //   seriesData[1].value = number2
+    //   seriesData[2].value = number3
+    //   seriesData[3].value = number4
+    //   // seriesData[4].value = number5
+    //   this.option.series[0].data = seriesData.sort(function (a, b) { return a.value - b.value })
+    // }, 1500)
   }
 }
 </script>

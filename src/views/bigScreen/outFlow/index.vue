@@ -19,7 +19,7 @@ export default {
         },
         xAxis: {
           type: 'category',
-          data: ['01/12', '01/11', '01/10', '01/09', '01/08', '01/07', '01/06'],
+          data: ['01/14', '01/13', '01/12', '01/11', '01/10', '01/09', '01/08'],
           axisTick: {
             show: false
           },
@@ -41,7 +41,7 @@ export default {
           {
             type: 'value',
             min: 0,
-            max: 500,
+            max: 5000,
             position: 'left',
             axisLine: {
               show: false,
@@ -79,8 +79,10 @@ export default {
         },
         series: [
           {
+
+            animation: true,
             name: '客流人数',
-            data: [360, 202, 340, 190, 170, 300, 400],
+            data: [3600, 2020, 3400, 1900, 1700, 3000, 4000],
             type: 'bar',
             barWidth: '20%',
             barGap: '50%',
@@ -111,9 +113,13 @@ export default {
   mounted () {
     this.outFlowBarChartsClear = setInterval(() => {
       this.option.series[0].data = []
-      for (let i = 0; i < 7; i++) {
-        this.option.series[0].data.push(Math.floor(Math.random() * 500 + 0))
-      }
+      this.option.series[0].data[0] = Math.floor(Math.random() * 5000 + 0)
+      this.option.series[0].data[1] = 2020
+      this.option.series[0].data[2] = 3400
+      this.option.series[0].data[3] = 1900
+      this.option.series[0].data[4] = 1700
+      this.option.series[0].data[5] = 3000
+      this.option.series[0].data[6] = 4000
     }, 1500)
   }
 }
